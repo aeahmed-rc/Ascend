@@ -1,0 +1,12 @@
+Browser->server-- Asks for initial HTML, CSS, JavaScript
+activate server
+Server->Browser-- Returns initial HTML, CSS, JavaScript
+Deactivate server
+Browser->>Server: AJAX/HTTP Request for Data
+activate Server
+Server-->>Database: Retrieve Data
+activate Database
+Database-->>Server: Data
+deactivate Database
+Server-->>Browser: JSON Data
+deactivate Server
