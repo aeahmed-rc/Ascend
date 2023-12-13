@@ -5,30 +5,29 @@ const Header =(props)=>{
     </div>
   )
 }
-const Part=()=>{
+
+const Part=({parts,exercises})=>{
 
   return(
     <div>
-
-    </div>
-  )
-}
-const Content=({part,exercises})=>{
-
-  console.log(part,exercises)
-  return <div>
-    <ul>
-    {part.map((part, index) => (
+   <ul>
+    {parts.map((part, index) => (
         <li key={index}>{part}: Exercises <span style={{ marginLeft: '5px' }}>:
         {exercises[index]}
       </span>
 </li> 
-       
-        
+         
       ))}
  
     </ul>
-   
+    </div>
+  )
+}
+const Content=()=>{
+  const parts=['Fundamentals of React','Using props to pass data','State of a component']
+  const exercises = [10,7,14]
+  return <div>
+    <Part parts={parts} exercises={exercises} />
   </div>
 }
 
@@ -47,12 +46,11 @@ const App = () => {
   const course = 'Half Stack application development'
   const exercises = [10,7,14]
 
-  const parts=['Fundamentals of React','Using props to pass data','State of a component']
 
   return (
     <div>
       <Header course={course}/>
-      <Content part={parts} exercises={exercises}/>
+      <Content/>
       <Total exercises={exercises}/>
     </div>
   )
