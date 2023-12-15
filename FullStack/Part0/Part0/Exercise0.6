@@ -1,0 +1,15 @@
+User->>Browser: Interacts with the SPA UI
+activate Browser
+
+Browser->>User: Display UI for adding a new note
+User->>Browser: Enters note content
+User->>Browser: Clicks "Save" button
+
+Browser->>Server: AJAX/HTTP POST Request for New Note
+activate Server
+Server-->>Database: Add New Note
+activate Database
+Database-->>Server: Confirmation or Updated Data
+deactivate Database
+Server-->>Browser: JSON Data or Confirmation
+deactivate Server
