@@ -6,14 +6,14 @@ const Header =(props)=>{
   )
 }
 
-const Part=({parts,exercises})=>{
-
+const Part=({parts,exercisesArray})=>{
+  console.log('exercises',exercisesArray)
   return(
     <div>
    <ul>
     {parts.map((part, index) => (
         <li key={index}>{part}: Exercises <span style={{ marginLeft: '5px' }}>:
-        {exercises[index]}
+        {exercisesArray[index]}
       </span>
 </li> 
          
@@ -23,20 +23,34 @@ const Part=({parts,exercises})=>{
     </div>
   )
 }
-const Content=()=>{
-  const parts=['Fundamentals of React','Using props to pass data','State of a component']
-  const exercises = [10,7,14]
+const Content=({part1,part2,part3})=>{
+  const parts=[]
+  const exercisesArray = []
+  const objectsArray =[part1,part2,part3]
+  console.log(objectsArray)
+  objectsArray.forEach(obj => {
+    if ('name' in obj) {
+      parts.push(obj.name);
+    }
+    if('exercises' in obj){
+      exercisesArray.push(obj.exercises)
+    }
+  });
+  console.log('array',exercisesArray)
+ 
+
   return <div>
-    <Part parts={parts} exercises={exercises} />
+    <Part parts={parts} exercisesArray={exercisesArray} />
+  
   </div>
 }
 
-const Total=({exercises})=>{
-  console.log(exercises)
+const Total=({part1,part2,part3})=>{
+ 
   return (
     <div>
       <p>
-      Number of exercises {exercises.reduce((a,b)=>a+b,0)}
+      Number of exercises {part1.exercises+part2.exercises+part3.exercises}
       </p>
     </div>
   )
@@ -44,14 +58,24 @@ const Total=({exercises})=>{
 
 const App = () => {
   const course = 'Half Stack application development'
-  const exercises = [10,7,14]
-
+  const part1 = {
+    name: 'Fundamentals of React',
+    exercises: 10
+  }
+  const part2 = {
+    name: 'Using props to pass data',
+    exercises: 7
+  }
+  const part3 = {
+    name: 'State of a component',
+    exercises: 14
+  }
 
   return (
     <div>
       <Header course={course}/>
-      <Content/>
-      <Total exercises={exercises}/>
+      <Content part1={part1} part2={part2} part3={part3} />
+      <Total part1={part1} part2={part2} part3={part3} />
     </div>
   )
 }
