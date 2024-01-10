@@ -1,9 +1,17 @@
 
 const StatisitcsLine =({text,value})=>{
     return(
-        <div>
-            <h3>{text}:{value}</h3>
-        </div>
+        <table>
+      <tbody>
+        
+          <tr>
+              <td>{text} : </td> 
+              <td key={value}>{value}</td>
+          </tr>
+            
+      </tbody>
+    </table>
+       
     )
 }
 export default StatisitcsLine
