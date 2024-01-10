@@ -49,12 +49,20 @@ console.log(data)
       <Button onClick={Handlegood} text="good"/>
       <Button onClick={Handlebad} text="bad"/>
       <Button onClick={Handleneutral} text="neutral"/>
+
       <h2>Statisitcs</h2>
-      <h3>good:{good}</h3>
-      <h3>bad:{bad}</h3>
-      <h3>neutral:{neutral}</h3>
-      <Data data={data}/>
- 
+      {data.total === 0 ? (
+  <span>No feedback given</span>
+) : (
+  <div>
+    <h3>good: {good}</h3>
+    <h3>bad: {bad}</h3>
+    <h3>neutral: {neutral}</h3>
+    <Data data={data} />
+  </div>
+)}
+      
+      
     </div>
   )
 }
