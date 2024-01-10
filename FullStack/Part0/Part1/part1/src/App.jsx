@@ -1,6 +1,7 @@
 import { useState,useEffect } from 'react'
 import Button from './Button'
 import Data from './Data'
+import StatisitcsLine from './StatisticsLine'
 
 const App = () => {
   // save clicks of each button to its own state
@@ -55,9 +56,9 @@ console.log(data)
   <span>No feedback given</span>
 ) : (
   <div>
-    <h3>good: {good}</h3>
-    <h3>bad: {bad}</h3>
-    <h3>neutral: {neutral}</h3>
+    <StatisitcsLine text="good" value={good} />
+    <StatisitcsLine text="bad" value={bad} />
+    <StatisitcsLine text="neutral" value={neutral} />
     <Data data={data} />
   </div>
 )}
