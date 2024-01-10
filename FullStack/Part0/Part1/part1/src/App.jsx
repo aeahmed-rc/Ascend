@@ -2,7 +2,7 @@ import { useState,useEffect } from 'react'
 import Button from './Button'
 import Data from './Data'
 import StatisitcsLine from './StatisticsLine'
-
+import Anectodotes from './Anectodotes'
 const App = () => {
   // save clicks of each button to its own state
   const [good, setGood] = useState(0)
@@ -11,6 +11,8 @@ const App = () => {
   const [data,setData]=useState({'total': 0,
   'average': 0,
   'positive': 0})
+
+
 
   const Handlegood=()=>{
 
@@ -63,7 +65,7 @@ console.log(data)
   </div>
 )}
       
-      
+      <Anectodotes/>
     </div>
   )
 }
